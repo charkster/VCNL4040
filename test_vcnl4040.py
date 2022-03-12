@@ -37,7 +37,7 @@ print("--> Print all non-default values")
 for bit_field in v4040.check_default_values():
 	v4040.read_bf_and_print(bit_field)
 check_int()
-print("Check ALS interrupts")
+print("--> Check ALS interrupts")
 v4040.i2c_bf_write(v4040.BF_ALS_INT_EN, v4040.BF_ALS_INT_EN.TABLE_ENUM["ENABLE"])
 time.sleep(1) # expect ALS_IF_H_INT
 v4040.i2c_bf_write(v4040.BF_ALS_THDH, 0xFFFF) # set to a high value so that ALS_IF_H_INT doesn't get set anymore
@@ -46,7 +46,7 @@ time.sleep(1)  # expect ALS_IF_L_INT
 v4040.i2c_bf_write(v4040.BF_ALS_THDL, 0x0000) # set to a low value so that ALS_IF_L_INT doesn't get set anymore
 time.sleep(1) # expect nothing
 check_int()
-print("Check proximity sensor")
+print("--> Check proximity sensor")
 v4040.i2c_bf_write(v4040.BF_ALS_SD, v4040.BF_ALS_SD.TABLE_ENUM["DISABLE"])
 v4040.i2c_bf_write(v4040.BF_LED_I, v4040.BF_LED_I.TABLE_ENUM["160mA"])
 v4040.i2c_bf_write(v4040.BF_PS_CANC, 0x0005)
